@@ -184,6 +184,7 @@ function initScreen() {
 function buildPlayerVision(count, degrees, viewDistance) {
   let rayCount = 0;
   let rayWidth = 0;
+  let inputsPerFrame = 0;
   let playerVisionRays = [];
   if (degrees == 360) {
     rayCount = count;
