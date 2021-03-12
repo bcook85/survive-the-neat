@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Survive The NEAT</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="Stylesheet" type="text/css" href="css/game.css">
+		<!-- <link rel="shortcut icon" type="image/png" href="images/zombie_1.png"/> -->
+	</head>
+	<body>
+		<div id="MenuContainer" class="">
+			<h1>Simulation Configuration</h1>
+			<div class="flexContainer">
+				<div class="flexColumn">
+					<h2>All Players</h2>
+					<table class="optionsTable">
+							<tr>
+								<th>Population Count</th>
+								<td><input type="number" id="PopulationCount" value="100"></td>
+							</tr>
+							<tr>
+								<th>Max Wave Time (seconds)</th>
+								<td><input type="number" id="MaxWaveTime" value="30"></td>
+							</tr>
+					</table>
+				</div>
+				<div class="flexColumnCenter">
+					<button type="button" class="btn" onclick="startGame();">Start Simulation</button>
+				</div>
+			</div>
+			<div class="flexContainer" id="PlayerContainer">
+				<div class="flexColumn">
+					<h2>Player 1</h2>
+					<table class="optionsTable">
+						<tr>
+							<th>Name</th>
+							<td><input type="text" id="Player1Name" value="Alice"></td>
+						</tr>
+						<tr>
+							<th>Color</th>
+							<td><input type="text" id="Player1Color" value="rgb(0,127,200)"></td>
+						</tr>
+						<tr>
+							<th>Max Health</th>
+							<td><input type="number" id="Player1Health" value="5"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Vision</td>
+						</tr>
+						<tr>
+							<th>Rays To Cast</th>
+							<td><input type="number" id="Player1Rays" value="7"></td>
+						</tr>
+						<tr>
+							<th>FOV</th>
+							<td>
+								<select id="Player1FOVSelect">
+									<option value="180">180&deg;</option>
+									<option value="360">360&deg;</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>View Distance</th>
+							<td><input type="number" id="Player1ViewDistance" value="8"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Neural Network</td>
+						</tr>
+						<tr>
+							<th>Neural Network Input Count</th>
+							<td><input type="number" id="Player1InputLayers" value="64" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Hidden Layers</th>
+							<td><input type="text" id="Player1HiddenLayers" value="32,16"></td>
+						</tr>
+						<tr>
+							<th>Neural Network Output Count</th>
+							<td><input type="number" id="Player1OutputLayers" value="8" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Mutation Chance</th>
+							<td><input type="number" id="Player1MutationChance" value="0.01"></td>
+						</tr>
+						<tr>
+							<th>Mutation Amount</th>
+							<td><input type="number" id="Player1MutationAmount" value="0.01"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Score Point Values</td>
+						</tr>
+						<tr>
+							<th>Attack Enemy</th>
+							<td><input type="number" id="Player1AttackEnemy" value="1"></td>
+						</tr>
+						<tr>
+							<th>Attack Ally</th>
+							<td><input type="number" id="Player1AttackAlly" value="-1"></td>
+						</tr>
+						<tr>
+							<th>Attack</th>
+							<td><input type="number" id="Player1Attack" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Alive</th>
+							<td><input type="number" id="Player1Alive" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Explore</th>
+							<td><input type="number" id="Player1Explore" value="0.01"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="flexColumn">
+					<h2>Player 2</h2>
+					<table class="optionsTable">
+						<tr>
+							<th>Name</th>
+							<td><input type="text" id="Player2Name" value="Bob"></td>
+						</tr>
+						<tr>
+							<th>Color</th>
+							<td><input type="text" id="Player2Color" value="rgb(0,127,200)"></td>
+						</tr>
+						<tr>
+							<th>Max Health</th>
+							<td><input type="number" id="Player2Health" value="5"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Vision</td>
+						</tr>
+						<tr>
+							<th>Rays To Cast</th>
+							<td><input type="number" id="Player2Rays" value="7"></td>
+						</tr>
+						<tr>
+							<th>FOV</th>
+							<td>
+								<select id="Player2FOVSelect">
+									<option value="180">180&deg;</option>
+									<option value="360">360&deg;</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>View Distance</th>
+							<td><input type="number" id="Player2ViewDistance" value="8"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Neural Network</td>
+						</tr>
+						<tr>
+							<th>Neural Network Input Count</th>
+							<td><input type="number" id="Player2InputLayers" value="64" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Hidden Layers</th>
+							<td><input type="text" id="Player2HiddenLayers" value="32,16"></td>
+						</tr>
+						<tr>
+							<th>Neural Network Output Count</th>
+							<td><input type="number" id="Player2OutputLayers" value="8" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Mutation Chance</th>
+							<td><input type="number" id="Player2MutationChance" value="0.01"></td>
+						</tr>
+						<tr>
+							<th>Mutation Amount</th>
+							<td><input type="number" id="Player2MutationAmount" value="0.01"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Score Point Values</td>
+						</tr>
+						<tr>
+							<th>Attack Enemy</th>
+							<td><input type="number" id="Player2AttackEnemy" value="1"></td>
+						</tr>
+						<tr>
+							<th>Attack Ally</th>
+							<td><input type="number" id="Player2AttackAlly" value="-1"></td>
+						</tr>
+						<tr>
+							<th>Attack</th>
+							<td><input type="number" id="Player2Attack" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Alive</th>
+							<td><input type="number" id="Player2Alive" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Explore</th>
+							<td><input type="number" id="Player2Explore" value="0.01"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="flexColumn">
+					<h2>Player 3</h2>
+					<table class="optionsTable">
+						<tr>
+							<th>Name</th>
+							<td><input type="text" id="Player3Name" value="Claire"></td>
+						</tr>
+						<tr>
+							<th>Color</th>
+							<td><input type="text" id="Player3Color" value="rgb(0,127,200)"></td>
+						</tr>
+						<tr>
+							<th>Max Health</th>
+							<td><input type="number" id="Player3Health" value="5"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Vision</td>
+						</tr>
+						<tr>
+							<th>Rays To Cast</th>
+							<td><input type="number" id="Player3Rays" value="7"></td>
+						</tr>
+						<tr>
+							<th>FOV</th>
+							<td>
+								<select id="Player3FOVSelect">
+									<option value="180">180&deg;</option>
+									<option value="360">360&deg;</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>View Distance</th>
+							<td><input type="number" id="Player3ViewDistance" value="8"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Neural Network</td>
+						</tr>
+						<tr>
+							<th>Neural Network Input Count</th>
+							<td><input type="number" id="Player3InputLayers" value="64" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Hidden Layers</th>
+							<td><input type="text" id="Player3HiddenLayers" value="32,16"></td>
+						</tr>
+						<tr>
+							<th>Neural Network Output Count</th>
+							<td><input type="number" id="Player3OutputLayers" value="8" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Mutation Chance</th>
+							<td><input type="number" id="Player3MutationChance" value="0.01"></td>
+						</tr>
+						<tr>
+							<th>Mutation Amount</th>
+							<td><input type="number" id="Player3MutationAmount" value="0.01"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Score Point Values</td>
+						</tr>
+						<tr>
+							<th>Attack Enemy</th>
+							<td><input type="number" id="Player3AttackEnemy" value="1"></td>
+						</tr>
+						<tr>
+							<th>Attack Ally</th>
+							<td><input type="number" id="Player3AttackAlly" value="-1"></td>
+						</tr>
+						<tr>
+							<th>Attack</th>
+							<td><input type="number" id="Player3Attack" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Alive</th>
+							<td><input type="number" id="Player3Alive" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Explore</th>
+							<td><input type="number" id="Player3Explore" value="0.01"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="flexColumn">
+					<h2>Player 4</h2>
+					<table class="optionsTable">
+						<tr>
+							<th>Name</th>
+							<td><input type="text" id="Player4Name" value="Doug"></td>
+						</tr>
+						<tr>
+							<th>Color</th>
+							<td><input type="text" id="Player4Color" value="rgb(0,127,200)"></td>
+						</tr>
+						<tr>
+							<th>Max Health</th>
+							<td><input type="number" id="Player4Health" value="5"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Vision</td>
+						</tr>
+						<tr>
+							<th>Rays To Cast</th>
+							<td><input type="number" id="Player4Rays" value="7"></td>
+						</tr>
+						<tr>
+							<th>FOV</th>
+							<td>
+								<select id="Player4FOVSelect">
+									<option value="180">180&deg;</option>
+									<option value="360">360&deg;</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>View Distance</th>
+							<td><input type="number" id="Player4ViewDistance" value="8"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Neural Network</td>
+						</tr>
+						<tr>
+							<th>Neural Network Input Count</th>
+							<td><input type="number" id="Player4InputLayers" value="64" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Hidden Layers</th>
+							<td><input type="text" id="Player4HiddenLayers" value="32,16"></td>
+						</tr>
+						<tr>
+							<th>Neural Network Output Count</th>
+							<td><input type="number" id="Player4OutputLayers" value="8" disabled="disabled"></td>
+						</tr>
+						<tr>
+							<th>Mutation Chance</th>
+							<td><input type="number" id="Player4MutationChance" value="0.01"></td>
+						</tr>
+						<tr>
+							<th>Mutation Amount</th>
+							<td><input type="number" id="Player4MutationAmount" value="0.01"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Score Point Values</td>
+						</tr>
+						<tr>
+							<th>Attack Enemy</th>
+							<td><input type="number" id="Player4AttackEnemy" value="1"></td>
+						</tr>
+						<tr>
+							<th>Attack Ally</th>
+							<td><input type="number" id="Player4AttackAlly" value="-1"></td>
+						</tr>
+						<tr>
+							<th>Attack</th>
+							<td><input type="number" id="Player4Attack" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Alive</th>
+							<td><input type="number" id="Player4Alive" value="-0.001"></td>
+						</tr>
+						<tr>
+							<th>Explore</th>
+							<td><input type="number" id="Player4Explore" value="0.01"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	  <div id="GameContainer" class="hide">
+			<canvas id="screen"></canvas>
+		</div>
+		<!-- Engine -->
+		<script type="text/javascript" src="js/engine/astar.js"></script>
+		<script type="text/javascript" src="js/engine/vectors.js"></script>
+		<script type="text/javascript" src="js/engine/image.js"></script>
+		<script type="text/javascript" src="js/engine/loop.js"></script>
+		<script type="text/javascript" src="js/engine/screen.js"></script>
+		<script type="text/javascript" src="js/engine/neat.js"></script>
+		<!-- Game Code -->
+		<script type="text/javascript" src="js/menu.js"></script>
+		<script type="text/javascript" src="js/randomroom.js"></script>
+		<script type="text/javascript" src="js/unit.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+	</body>
+</html>

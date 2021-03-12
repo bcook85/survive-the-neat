@@ -1,0 +1,151 @@
+body {
+	background-color: #111;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: Arial;
+	font-size: 1em;
+}
+canvas {
+	padding: 0;
+	margin: 0;
+}
+/******************************************************************************
+Misc
+******************************************************************************/
+
+.hide {
+	display: none;
+}
+
+.center {
+	text-align: center;
+}
+
+h1 {
+	color: white;
+	font-size: 2em;
+	margin: 0.5em;
+}
+
+h2 {
+	font-size: 1em;
+	margin: 0.25em;
+}
+
+.btn {
+	display: inline-block;
+	border: 1px solid white;
+	background-color: green;
+	color: white;
+	font-weight: bold;
+	font-size: 1em;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 15px;
+}
+.btn:hover {
+	background-color: green;
+	color: black;
+	cursor: pointer;
+}
+
+/******************************************************************************
+Colors
+******************************************************************************/
+
+.green {
+	color: #00FF00;
+}
+
+.red {
+	color: #FF0000;
+}
+
+.blue {
+	color: #0000FF;
+}
+
+/******************************************************************************
+Game Container
+******************************************************************************/
+
+.gameContainer {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+/******************************************************************************
+Flex Container
+******************************************************************************/
+
+.flexContainer {
+	background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 0.5em;
+  margin: auto;
+  max-width: 1400px;
+}
+
+.flexColumn {
+  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ];
+}
+
+.flexColumnCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/******************************************************************************
+Options Tables
+******************************************************************************/
+
+.optionsTable {
+	text-align: left;
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin: auto;
+}
+.optionsTable tr {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 3px;
+}
+.optionsTable td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 3px;
+}
+.optionsTable th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	background-color: #999;
+	padding: 3px;
+}
+.optionsTable input[type=text] {
+	text-align: left;
+}
+.optionsTable input[type=number] {
+	text-align: right;
+}
+.optionsTable input {
+	border: 1px solid black;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 7em;
+}
+.optionsTable select {
+	border: 1px solid black;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 7em;
+}
