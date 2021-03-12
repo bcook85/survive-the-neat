@@ -49,12 +49,12 @@ class Brain {
       this.layers.push(new Layer(dimensions[i], dimensions[i - 1]));
     }
   };
-	static sigmoid(x) {
-		return 1 / (1 + Math.exp(-x));
-	};
-	static rectifiedLinear(x) {
-		return x <= 0 ? 0 : x;
-	};
+  static sigmoid(x) {
+    return 1 / (1 + Math.exp(-x));
+  };
+  static rectifiedLinear(x) {
+    return x <= 0 ? 0 : x;
+  };
   feedForward(inputs) {
     for (let i = 0; i < this.layers.length; i++) {
       inputs = this.layers[i].feedNeurons(inputs);
@@ -95,7 +95,7 @@ class Neat {
     }
     return this.brains[brainID].feedForward(input);
   };
-	nextGeneration() {
+  nextGeneration() {
     this.brains.sort((a, b) => b.score - a.score);
     let newBrains = [];
     for (let i = 0; i < this.brains.length; i++) {
@@ -110,11 +110,11 @@ class Neat {
     }
     this.brains = newBrains;
     this.generation += 1;
-	};
+  };
   pickTop(percent) {
     return Math.floor(
       Math.random() * Math.floor(this.populationSize * percent)
-    );
+      );
   };
   crossover(brain1, brain2) {
     let newBrain = new Brain(brain1.dimensions);

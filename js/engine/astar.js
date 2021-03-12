@@ -50,12 +50,12 @@ function Astar(sx, sy, ex, ey, grid) {
         }
       }
       if (newNode) {
-        // Manhattan
-        // let h = (Math.abs(ex - neighbors[n][0]) + Math.abs(ey - neighbors[n][1]));
-        // Euclidean
         let dx = ex - neighbors[n][0];
         let dy = ey - neighbors[n][1];
+        // Euclidean
         let h = Math.sqrt((dx * dx) + (dy * dy));
+        // Manhattan
+        // let h = (Math.abs(ex - neighbors[n][0]) + Math.abs(ey - neighbors[n][1]));
         let f = g + h;
         let foundPlace = false;
         for (let o = open.length - 1; o >= 0; o--) {
