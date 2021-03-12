@@ -88,7 +88,8 @@ p4RayCount.onchange = () => {
 function startGame() {
 	// Flip UI over to game mode
 	document.getElementById("MenuContainer").className = "hide";
-	document.getElementById("GameContainer").className = "";
+	document.getElementById("body").className = "noOverflow";// for full screen canvas, no scroll
+	document.getElementById("screen").className = "";
 	// Get UI Values
 	maxPopulation = parseInt(document.getElementById("PopulationCount").value);
 	maxWaveTime = parseInt(document.getElementById("MaxWaveTime").value) * 60;

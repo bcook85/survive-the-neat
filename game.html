@@ -9,7 +9,7 @@
 		<link rel="Stylesheet" type="text/css" href="css/game.css">
 		<!-- <link rel="shortcut icon" type="image/png" href="images/zombie_1.png"/> -->
 	</head>
-	<body>
+	<body id="body">
 		<div id="MenuContainer" class="">
 			<h1>Simulation Configuration</h1>
 			<div class="flexContainer">
@@ -365,9 +365,7 @@
 				</div>
 			</div>
 		</div>
-	  <div id="GameContainer" class="hide">
-			<canvas id="screen"></canvas>
-		</div>
+		<canvas id="screen" class="hide"></canvas>
 		<!-- Engine -->
 		<script type="text/javascript" src="js/engine/astar.js"></script>
 		<script type="text/javascript" src="js/engine/vectors.js"></script>
