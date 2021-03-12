@@ -68,6 +68,21 @@ let p1InputLayers = document.getElementById("Player1InputLayers");
 p1RayCount.onchange = () => {
 	p1InputLayers.value = parseInt(p1RayCount.value) * STACKEDFRAMES * RAYTYPES + 1;
 };
+let p2RayCount = document.getElementById("Player2Rays");
+let p2InputLayers = document.getElementById("Player2InputLayers");
+p2RayCount.onchange = () => {
+	p2InputLayers.value = parseInt(p2RayCount.value) * STACKEDFRAMES * RAYTYPES + 1;
+};
+let p3RayCount = document.getElementById("Player3Rays");
+let p3InputLayers = document.getElementById("Player3InputLayers");
+p3RayCount.onchange = () => {
+	p3InputLayers.value = parseInt(p3RayCount.value) * STACKEDFRAMES * RAYTYPES + 1;
+};
+let p4RayCount = document.getElementById("Player4Rays");
+let p4InputLayers = document.getElementById("Player4InputLayers");
+p4RayCount.onchange = () => {
+	p4InputLayers.value = parseInt(p4RayCount.value) * STACKEDFRAMES * RAYTYPES + 1;
+};
 
 // Simulation Start
 function startGame() {
